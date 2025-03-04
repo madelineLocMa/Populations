@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>USA Population Pyramid (2023)</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: larger;
+            text-align: center;
+            background-color: white;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        .chart {
+            width: 80%;
+            height: 90vh; /* Make the chart taller */
+        }
+    </style>
+</head>
+<body>
+    <h2>USA Population Pyramid (2023)</h2>
+    <div class="container">
+        <div id="usa_pyramid" class="chart"></div>
+    </div>
+    <script>
+        var ageGroups = ['85+', '80-84', '75-79', '70-74', '65-69', '60-64', '55-59', '50-54', '45-49', '40-44',
+                         '35-39', '30-34', '25-29', '20-24', '15-19', '10-14', '5-9', '0-4'];
+
+        var usaMale = [2395125, 3033322, 5296221, 7326113, 9338450, 11239012, 11453809, 11618425, 11821447, 12104235, 
+                       12368244, 12503112, 12784961, 12911145, 11651851, 11042088, 10425999, 9535485].map(x => -Math.round(x)).map(x => -x);
+
+        var usaFemale = [3999528, 4038109, 6221752, 8219174, 10006551, 11872153, 12130488, 12451245, 12738952, 13058211, 
+                         13289875, 13502367, 13842511, 14012581, 10957887, 10419078, 9902748, 9108193].map(x => Math.round(x));
+
+        var trace1 = {
+            x: usaMale,
+            y: ageGroups,
+            name: 'Male',
+            orientation: 'h',
+            type: 'bar',
+            marker: { color: 'blue' }
+        };
+
+        var trace2 = {
+            x: usaFemale,
+            y: ageGroups,
+            name: 'Female',
+            orientation: 'h',
+            type: 'bar',
+            marker: { color: 'red' }
+        };
+
+        var layout = {
+            title: 'USA Population Pyramid (2023)',
+            barmode: 'overlay',
+            bargap: 0.1,
+            xaxis: {
+                title: 'Population',
+                tickvals: [-14000000, -7000000, 0, 7000000, 14000000],
+                ticktext: ['14M', '7M', '0', '7M', '14M'],
+                range: [-15000000, 15000000],
+                showgrid: true,
+                zeroline: true,
+                gridcolor: 'lightgray'
+            },
+            yaxis: {
+                title: 'Age Group',
+                autorange: 'reversed',
+                showgrid: true,
+                zeroline: true,
+                gridcolor: 'lightgray'
+            },
+            legend: { x: 0.85, y: 1 },
+            plot_bgcolor: 'white',
+            paper_bgcolor: 'white',
+            height: 900 // Make the chart taller
+        };
+
+        Plotly.newPlot('usa_pyramid', [trace1, trace2], layout);
+    </script>
+</body>
+</html>
