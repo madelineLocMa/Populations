@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Population Pyramid: Collin County vs. U.S. (2023)</title>
+    <title>Population Pyramid: Collin County (2023)</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         body {
@@ -13,18 +13,17 @@
         }
         .container {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
         }
         .chart {
-            width: 45%;
+            width: 50%;
         }
     </style>
 </head>
 <body>
-    <h2>Population Pyramid: Collin County vs. U.S. (2023)</h2>
+    <h2>Population Pyramid: Collin County (2023)</h2>
     <div class="container">
         <div id="collin_pyramid" class="chart"></div>
-        <div id="us_pyramid" class="chart"></div>
     </div>
     <script>
         var ageGroups = ['Under 5 years', '5 to 9 years', '10 to 14 years', '15 to 19 years',
@@ -35,9 +34,6 @@
 
         var collinMale = [33159, 40044, 42747, 43846, 32858, 33998, 37796, 37742, 34521, 30479, 27162, 23758, 21024, 16168, 12651, 8137, 5014, 2596];
         var collinFemale = [31846, 37995, 41653, 40354, 32081, 33846, 37767, 37668, 35088, 31277, 28426, 25391, 23217, 18952, 15694, 11398, 8598, 5369];
-
-        var usMale = [9535485, 10425999, 11042088, 11651851, 11561136, 10934944, 11020489, 11142452, 10293208, 9792274, 9299323, 8435552, 7048307, 5939462, 4449734, 3034848, 1861620, 2395125].map(x => x / 3143);
-        var usFemale = [9108193, 9902748, 10419078, 10957887, 10829281, 10340562, 10593267, 10769274, 10273411, 10021922, 9704993, 9065818, 8209536, 7446635, 6174738, 4968211, 3367572, 3999528].map(x => x / 3143);
 
         function createPyramid(divId, maleData, femaleData, title) {
             var trace1 = {
@@ -79,7 +75,6 @@
         }
 
         createPyramid('collin_pyramid', collinMale, collinFemale, 'Collin County Population Pyramid');
-        createPyramid('us_pyramid', usMale, usFemale, 'U.S. Average County Population Pyramid');
     </script>
 </body>
 </html>
