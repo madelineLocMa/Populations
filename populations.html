@@ -35,7 +35,7 @@
                          '35-39', '30-34', '25-29', '20-24', '15-19', '10-14', '5-9', '0-4'];
 
         var collinMale = [2596, 5014, 8137, 12651, 16168, 21024, 23758, 27162, 30479, 34521, 
-                          37742, 37796, 33998, 32858, 43846, 42747, 40044, 33159].map(x => -x);
+                          37742, 37796, 33998, 32858, 43846, 42747, 40044, 33159];
 
         var collinFemale = [5369, 8598, 11398, 15694, 18952, 23217, 25391, 28426, 31277, 35088, 
                             37668, 37767, 33846, 32081, 40354, 41653, 37995, 31846];
@@ -64,8 +64,8 @@
             title: 'Collin County',
             barmode: 'overlay',
             bargap: 0.1,
-            xaxis: { title: 'Population', range: [-40000, 40000] },
-            yaxis: { title: 'Age Group', autorange: 'reversed' },
+            xaxis: { title: 'Population', tickvals: [0, 10000, 20000, 30000, 40000], ticktext: ['0', '10K', '20K', '30K', '40K'] },
+            yaxis: { title: 'Age Group', autorange: 'reversed', title_standoff: 15 },
             showlegend: true,
             hovermode: 'x unified'
         };
@@ -73,7 +73,7 @@
         Plotly.newPlot('collin_pyramid', [collinTrace1, collinTrace2], collinLayout);
 
         var usaMale = [2395125, 3033322, 5296221, 7326113, 9338450, 11239012, 11453809, 11618425, 11821447, 12104235, 
-                       12368244, 12503112, 12784961, 12911145, 11651851, 11042088, 10425999, 9535485].map(x => -x);
+                       12368244, 12503112, 12784961, 12911145, 11651851, 11042088, 10425999, 9535485];
 
         var usaFemale = [3999528, 4038109, 6221752, 8219174, 10006551, 11872153, 12130488, 12451245, 12738952, 13058211, 
                          13289875, 13502367, 13842511, 14012581, 10957887, 10419078, 9902748, 9108193];
@@ -102,8 +102,8 @@
             title: 'United States',
             barmode: 'overlay',
             bargap: 0.1,
-            xaxis: { title: 'Population', range: [-15000000, 15000000] },
-            yaxis: { title: 'Age Group', autorange: 'reversed' },
+            xaxis: { title: 'Population', tickvals: [0, 5000000, 10000000, 15000000], ticktext: ['0', '5M', '10M', '15M'] },
+            yaxis: { title: 'Age Group', autorange: 'reversed', title_standoff: 15 },
             showlegend: true,
             hovermode: 'x unified'
         };
